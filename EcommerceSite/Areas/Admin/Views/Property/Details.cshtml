@@ -1,0 +1,26 @@
+﻿
+@model Property
+
+<div style="overflow-x:scroll">
+
+
+    <table class="table table-bordered" style="width:1500px;">
+        <thead class="bg-register-image">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Iconlink</th>
+                <th scope="col">Name</th>
+                <th scope="col">Descripiton</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <th scope="row">@Model.Id</th>
+                <td>@Html.Raw(Model.Iconlink)</td>
+                <td>@Html.Raw(Model.Name)</td>
+                <td>@Model.Descripiton</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

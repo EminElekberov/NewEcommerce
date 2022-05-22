@@ -1,0 +1,20 @@
+﻿@model Fabrica
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Image</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <th scope="row">@Model.Id</th>
+            <td>
+                <img width="200" height="150" src="~/images/Fabrica/@Model.Image" alt="Alternate Text" />
+            </td>
+        </tr>
+    </tbody>
+</table>

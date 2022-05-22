@@ -1,0 +1,24 @@
+﻿@model Property
+<div style="height:2000px">
+    <form method="post" enctype="multipart/form-data">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group">
+            <label>Iconlink</label>
+            <textarea asp-for="Iconlink" id="Textone" class="form-control"></textarea>
+            <span asp-validation-for="Iconlink" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label>Name</label>
+            <textarea asp-for="Name" id="textTo" class="form-control"></textarea>
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label>Descripiton</label>
+            <textarea asp-for="Descripiton" id="numberOne" class="form-control"></textarea>
+            <span asp-validation-for="Descripiton" class="text-danger"></span>
+        </div>
+        @*<button type="submit" class="btn btn-danger btn-block" value="Update" />*@
+        <button type="submit" class="btn btn-danger btn-block"> Save</button>
+    </form>
+
+</div>

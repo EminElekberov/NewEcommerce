@@ -1,0 +1,44 @@
+﻿@model IList<Fabrica>
+
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-primary" role="alert">
+        @TempData["Success"]
+    </div>
+}
+<div style="margin-bottom:50px">
+    <a href="/Admin/Fabrica/Create" class="btn btn-outline-success" style="width:100%">Add new slider</a>
+</div>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Image</th>
+            <th>CRUD</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@item.Id</th>
+                <td>
+                    <img width="200" height="150" src="~/images/Fabrica/@item.Image" alt="Alternate Text" />
+                </td>
+
+                <td>
+                    <a href="/Admin/Fabrica/Edit/@item.Id" style="color:red"><i class="fas fa-edit"></i></a>
+                    <a href="/Admin/Fabrica/Delete/@item.Id" onclick="return confirm('Are you sure')"><i class="fas fa-trash-alt"></i></a>
+                    <br />
+                    <a href="/Admin/Fabrica/Details/@item.Id" style="color:red">Etrafli</a>
+                </td>
+            </tr>
+
+        }
+
+    </tbody>
+</table>

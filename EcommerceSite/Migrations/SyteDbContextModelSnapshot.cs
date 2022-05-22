@@ -55,6 +55,21 @@ namespace EcommerceSite.Migrations
                     b.ToTable("Colors");
                 });
 
+            modelBuilder.Entity("EcommerceSite.Models.Fabrica", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Fabricas");
+                });
+
             modelBuilder.Entity("EcommerceSite.Models.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -126,6 +141,27 @@ namespace EcommerceSite.Migrations
                     b.HasIndex("colorId");
 
                     b.ToTable("ProductsToColors");
+                });
+
+            modelBuilder.Entity("EcommerceSite.Models.Property", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Descripiton")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Iconlink")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Properties");
                 });
 
             modelBuilder.Entity("EcommerceSite.Models.Review", b =>
