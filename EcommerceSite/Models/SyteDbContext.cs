@@ -14,8 +14,10 @@ namespace EcommerceSite.Models
         public DbSet<Product> Products { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Size> sizes { get; set; }
+        public DbSet<About> Abouts { get; set; }
         public DbSet<Color> Colors { get; set; }
         public DbSet<Property> Properties { get; set; }
+        public DbSet<WhoWeAre> whoWeAres { get; set; }
         public DbSet<Fabrica> Fabricas { get; set; }
         public DbSet<ProductsToColors> ProductsToColors { get; set; }
         public DbSet<ProductPictureGallery> ProductPictureGalleries{ get; set; }
