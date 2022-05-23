@@ -53,6 +53,7 @@
     <Folder Include="wwwroot\images\categories\" />
     <Folder Include="wwwroot\images\gallery\" />
     <Folder Include="wwwroot\images\Fabrica\" />
+    <Folder Include="wwwroot\images\team\" />
     <Folder Include="wwwroot\images\weare\" />
     <Folder Include="wwwroot\images\portfolio\" />
     <Folder Include="wwwroot\images\products\" />
