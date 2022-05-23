@@ -1,0 +1,24 @@
+﻿@model Client
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Image</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <th scope="row">@Model.Id</th>
+            <td>
+                <img width="200" height="150" src="~/images/client/@Model.Image" alt="Alternate Text" />
+            </td>
+            <td>@Model.Name</td>
+            <td>@Model.Description</td>
+        </tr>
+    </tbody>
+</table>
