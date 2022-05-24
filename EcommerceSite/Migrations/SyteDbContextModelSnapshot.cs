@@ -37,6 +37,61 @@ namespace EcommerceSite.Migrations
                     b.ToTable("Abouts");
                 });
 
+            modelBuilder.Entity("EcommerceSite.Models.Blog", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phorizm")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("Blogs");
+                });
+
+            modelBuilder.Entity("EcommerceSite.Models.BlogReview", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("BlogId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Message")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BlogId");
+
+                    b.ToTable("BlogReviews");
+                });
+
             modelBuilder.Entity("EcommerceSite.Models.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -94,6 +149,24 @@ namespace EcommerceSite.Migrations
                     b.ToTable("Colors");
                 });
 
+            modelBuilder.Entity("EcommerceSite.Models.ContactInformation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Iconlink")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ContactInformation");
+                });
+
             modelBuilder.Entity("EcommerceSite.Models.Fabrica", b =>
                 {
                     b.Property<int>("Id")
@@ -107,6 +180,47 @@ namespace EcommerceSite.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Fabricas");
+                });
+
+            modelBuilder.Entity("EcommerceSite.Models.FaqComponent", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("FaqTitleId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ToggleHref")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FaqTitleId");
+
+                    b.ToTable("FaqComponents");
+                });
+
+            modelBuilder.Entity("EcommerceSite.Models.FaqTitle", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FaqTitles");
                 });
 
             modelBuilder.Entity("EcommerceSite.Models.MyTeam", b =>
@@ -131,6 +245,30 @@ namespace EcommerceSite.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("MyTeams");
+                });
+
+            modelBuilder.Entity("EcommerceSite.Models.OurStores", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AdditionalInformation")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StoreName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("OurStores");
                 });
 
             modelBuilder.Entity("EcommerceSite.Models.Product", b =>
@@ -305,6 +443,33 @@ namespace EcommerceSite.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("whoWeAres");
+                });
+
+            modelBuilder.Entity("EcommerceSite.Models.Blog", b =>
+                {
+                    b.HasOne("EcommerceSite.Models.Category", "category")
+                        .WithMany("Blogs")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("EcommerceSite.Models.BlogReview", b =>
+                {
+                    b.HasOne("EcommerceSite.Models.Blog", "Blog")
+                        .WithMany("BlogReviews")
+                        .HasForeignKey("BlogId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("EcommerceSite.Models.FaqComponent", b =>
+                {
+                    b.HasOne("EcommerceSite.Models.FaqTitle", "FaqTitle")
+                        .WithMany("faqComponents")
+                        .HasForeignKey("FaqTitleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("EcommerceSite.Models.Product", b =>

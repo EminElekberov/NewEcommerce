@@ -14,6 +14,7 @@ namespace EcommerceSite.Models
         public string className { get; set; }
         public string Image{get;set;}
         public List<Product> Products { get; set; }
+        public List<Blog> Blogs { get; set; }
         [NotMapped]
         public IFormFile Photo { get; set; }
     }

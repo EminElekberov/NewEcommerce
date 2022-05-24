@@ -1,0 +1,55 @@
+﻿@model IList<Blog>
+@{
+    ViewData["Title"] = "Index";
+}
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-primary" role="alert">
+        @TempData["Success"]
+    </div>
+}
+
+<div style="overflow-x: auto">
+
+    <div>
+        <a href="/Admin/blog/Create" class="btn btn-outline-info" style="width:100%">Add new student</a>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Phorizm</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th scope="row">@item.Id</th>
+                    <td>
+                        <img width="200" height="150" src="~/images/blogs/@item.Image" alt="Alternate Text" />
+                    </td>
+                    <th scope="row">@item.category.Name</th>
+                    <th scope="row">@item.Date</th>
+                    <th scope="row">@item.Title</th>
+                    <th scope="row">@item.Description</th>
+                    <th scope="row">@item.Phorizm</th>
+                    <td>
+                        <a href="/Admin/blog/Delete/@item.Id" onclick="return confirm('Silmek istediyinizden eminsiz?')" style="color:red">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+</div>

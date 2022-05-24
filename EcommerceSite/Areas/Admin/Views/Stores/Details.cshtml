@@ -1,0 +1,27 @@
+﻿@model OurStores
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Image</th>
+            <th scope="col">Store Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Additional Information</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <th scope="row">@Model.Id</th>
+            <td>
+                <img width="200" height="150" src="~/images/products/@Model.Image" alt="Alternate Text" />
+            </td>
+            <td>@Model.StoreName</td>
+            <td>@Model.Description</td>
+            <td>@Model.AdditionalInformation</td>
+
+        </tr>
+    </tbody>
+</table>

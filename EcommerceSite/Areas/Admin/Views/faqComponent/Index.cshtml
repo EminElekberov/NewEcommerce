@@ -1,0 +1,49 @@
+﻿@model IList<FaqComponent>
+@{
+    ViewData["Title"] = "Index";
+}
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-primary" role="alert">
+        @TempData["Success"]
+    </div>
+}
+
+<div style="overflow-x: auto">
+    <div>
+        <a href="/Admin/FaqComponent/Create" class="btn btn-outline-info" style="width:100%">Add new Component</a>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Faq Category</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>ToggleHref</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th scope="row">@item.Id</th>
+                    <th scope="row">@item.FaqTitle.Name</th>
+                    <th scope="row">@item.Title</th>
+                    <th scope="row">@item.Description</th>
+                    <th scope="row">@item.ToggleHref</th>
+
+                    <td>
+                        <a href="/Admin/ShopByCategories/Delete/@item.Id" onclick="return confirm('Silmek istediyinizden eminsiz?')" style="color:red">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+</div>

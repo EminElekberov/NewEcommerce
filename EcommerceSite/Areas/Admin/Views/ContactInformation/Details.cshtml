@@ -1,0 +1,24 @@
+﻿
+@model ContactInformation
+
+<div style="overflow-x:scroll">
+
+
+    <table class="table table-bordered" style="width:1500px;">
+        <thead class="bg-register-image">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Iconlink</th>
+                <th scope="col">Title</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <th scope="row">@Model.Id</th>
+                <th scope="row">@Html.Raw(Model.Iconlink)</th>
+                <td>@Html.Raw(Model.Title)</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
