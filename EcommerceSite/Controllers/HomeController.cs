@@ -1,5 +1,7 @@
 ﻿using EcommerceSite.Models;
+using EcommerceSite.ViewModel;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -11,16 +13,21 @@ namespace EcommerceSite.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly SyteDbContext dbContext;
+        public HomeController(SyteDbContext _dbContext)
         {
-            _logger = logger;
+            dbContext = _dbContext;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            HomeVm homeVm = new HomeVm
+            {
+                Categories = await dbContext.Categories.Include(z=>z.Products).ToListAsync(),
+                Products = await dbContext.Products.Include(x => x.category).ToListAsync(),
+                Fabricas = await dbContext.Fabricas.ToListAsync()
+            };
+            return View(homeVm);
         }
 
         public IActionResult Privacy()
