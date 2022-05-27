@@ -197,6 +197,36 @@ namespace EcommerceSite.Migrations
                     b.ToTable("ContactInformation");
                 });
 
+            modelBuilder.Entity("EcommerceSite.Models.Deals", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Date")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("PastPrice")
+                        .HasColumnType("float");
+
+                    b.Property<double>("PresentPrice")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Deals");
+                });
+
             modelBuilder.Entity("EcommerceSite.Models.Fabrica", b =>
                 {
                     b.Property<int>("Id")

@@ -1,0 +1,30 @@
+﻿@model Deals
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Image</th>
+            <th scope="col">Title</th>
+            <th scope="col">Name</th>
+            <th scope="col">PresentPrice</th>
+            <th scope="col">PastPrice</th>
+            <th scope="col">Date</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <th scope="row">@Model.Id</th>
+            <td>
+                <img width="200" height="150" src="~/images/Deals/@Model.Image" alt="Alternate Text" />
+            </td>
+            <td>@Model.Title</td>
+            <td>@Model.Name</td>
+            <td>@Model.PresentPrice</td>
+            <td>@Model.PastPrice</td>
+            <td>@Model.Date</td>
+        </tr>
+    </tbody>
+</table>

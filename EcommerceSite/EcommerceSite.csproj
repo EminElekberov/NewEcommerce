@@ -55,6 +55,7 @@
     <Folder Include="wwwroot\images\Fabrica\" />
     <Folder Include="wwwroot\images\client\" />
     <Folder Include="wwwroot\images\blogs\" />
+    <Folder Include="wwwroot\images\Deals\" />
     <Folder Include="wwwroot\images\team\" />
     <Folder Include="wwwroot\images\weare\" />
     <Folder Include="wwwroot\images\portfolio\" />

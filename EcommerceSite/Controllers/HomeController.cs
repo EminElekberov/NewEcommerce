@@ -25,7 +25,8 @@ namespace EcommerceSite.Controllers
             {
                 Categories = await dbContext.Categories.Include(z=>z.Products).ToListAsync(),
                 Products = await dbContext.Products.Include(x => x.category).ToListAsync(),
-                Fabricas = await dbContext.Fabricas.ToListAsync()
+                Fabricas = await dbContext.Fabricas.ToListAsync(),
+                Deals=await dbContext.Deals.ToListAsync()
             };
             return View(homeVm);
         }
