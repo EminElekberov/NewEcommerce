@@ -10,8 +10,14 @@ namespace EcommerceSite.ViewModel
     {
         public List<Category> Categories { get; set; }
         public List<Product> Products { get; set; }
+        public List<ProductsToColors> ProductsToColors { get; set; }
         public List<Deals> Deals { get; set; }
+        public List<Size> Sizes{ get; set; }
+        public List<SizeToProduct> SizeToProducts { get; set; }
+        public List<ProductPictureGallery> ProductPictureGalleries { get; set; }
+        public List<Property> Properties { get; set; }
         public List<Fabrica> Fabricas { get; set; }
+        public List<Color> Colors{ get; set; }
         public Category Category { get; set; }
     }
 }
