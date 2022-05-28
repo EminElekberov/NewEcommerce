@@ -179,12 +179,13 @@
 
                                                 <div class="filter-item">
                                                     <div class="custom-control custom-checkbox">
-                                                        <input type="radio" name="drone" class="custom-control-input" id="@item.className">
+                                                        <input type="radio" name="drone" class="custom-control-input categories" value="@item.Id" id="@item.className">
                                                         <label class="custom-control-label" for="@item.className">@item.Name</label>
                                                     </div><!-- End .custom-checkbox -->
                                                     <span class="item-count">@item.Products.Count</span>
                                                 </div><!-- End .filter-item -->
                                             }
+                                            <input type="hidden" name="cate" id="cate" />
                                         </div><!-- End .filter-items -->
                                     </div><!-- End .widget-body -->
                                 </div><!-- End .collapse -->
@@ -204,11 +205,13 @@
                                                 @foreach (var item in Model.Sizes)
                                                 {
                                                     <div class="custom-control custom-checkbox">
-
-                                                        <input type="radio" name="radi" class="custom-control-input" id="@item.Name">
+                                                        <input type="radio" name="radi" class="custom-control-input sizers" value="@item.id" id="@item.Name">
                                                         <label class="custom-control-label" for="@item.Name">@item.Name</label>
                                                     </div><!-- End .custom-checkbox -->
                                                 }
+                                                <input type="hidden" name="size" id="sizer" />
+
+
                                             </div><!-- End .filter-item -->
                                         </div><!-- End .filter-items -->
                                     </div><!-- End .widget-body -->
@@ -227,9 +230,11 @@
                                         <div class="filter-colors">
                                             @foreach (var item in Model.Colors)
                                             {
-                                                <a style="background: @item.Name;"><span class="sr-only">Color Name</span></a>
+                                                <a data-id="@item.Id" style="background: @item.Name;" class="colorinput"><span class="sr-only">Color Name</span></a>
                                                 @*<a href="#" class="selected" style="background: #cc3333;"><span class="sr-only">Color Name</span></a>*@
                                             }
+                                            <input type="hidden" name="coloin" id="coloin" />
+
                                         </div><!-- End .filter-colors -->
                                     </div><!-- End .widget-body -->
                                 </div><!-- End .collapse -->
@@ -260,3 +265,45 @@
         </div><!-- End .page-content -->
     </main>
 </div>
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            console.log("isledi");
+            $(".sizers").each(function (e) {
+                $(this).click(function (s) {
+                    let id = $(s.currentTarget).val();
+                    $("#sizer").attr("value", id);
+                    console.log($("#sizer").attr("value"));
+
+                })
+
+            })
+            $(document).ready(function () {
+                console.log("isledi");
+                $(".categories").each(function (e) {
+                    $(this).click(function (s) {
+                        let id = $(s.currentTarget).val();
+                        $("#cate").attr("value", id);
+                        console.log($("#cate").attr("value"));
+
+                    })
+
+                })
+            });
+
+            $(document).ready(function () {
+                console.log("isledi");
+                $(".colorinput").each(function (e) {
+                    $(this).click(function (s) {
+                        s.preventDefault();
+                        let id = $(s.currentTarget).data("id");
+                        $("#coloin").attr("value", id);
+                        console.log($("#coloin").attr("value"));
+
+                    })
+
+                })
+            });
+        });
+    </script>
+}
