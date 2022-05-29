@@ -14,6 +14,8 @@ namespace EcommerceSite.Models
         public int PresentPrice { get; set; }
         public int PastPrice { get; set; }
         public string Description { get; set; }
+        public string Information { get; set; }
+        public string ShippinandReturns { get; set; }
         public int Percent { get; set; }
         public Category category { get; set; }
         public int CategoryId { get; set; }
@@ -30,6 +32,5 @@ namespace EcommerceSite.Models
         [NotMapped]
         public List<int> SizeId { get; set; }
         public IList<SizeToProduct> SizeToProducts { get; set; }
-
     }
 }
