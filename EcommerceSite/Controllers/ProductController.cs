@@ -18,11 +18,16 @@ namespace EcommerceSite.Controllers
         }
         public async Task<IActionResult> Details(int? id)
         {
+            if (id==null)
+            {
+                return NotFound();
+            }
             HomeVm homeVm = new HomeVm
             {
                 Products = await dbContext.Products.Where(x=>x.Id==id).Include(x => x.category).Include(x => x.ProductsToColors).ThenInclude(x => x.color).Include(x => x.SizeToProducts).ThenInclude(x => x.Size).Include(x=>x.ProductPictureGalleries).ToListAsync(),
                 listRewiew = dbContext.Reviews.Where(x => x.productId == id).ToList(),
-
+                produ=await dbContext.Products.Include(x=>x.category).Include(x=>x.ProductsToColors).ThenInclude(x=>x.color).Include(x=>x.Reviews).ToListAsync(),
+                Reviews=await dbContext.Reviews.ToListAsync()
             };
             return View(homeVm);
         }
