@@ -191,3 +191,4 @@ D:\pragmateck\EcommerceSite\EcommerceSite\obj\Debug\netcoreapp3.1\Razor\Views\Bl
 D:\pragmateck\EcommerceSite\EcommerceSite\obj\Debug\netcoreapp3.1\Razor\Views\Blog\Details.cshtml.g.cs
 D:\pragmateck\EcommerceSite\EcommerceSite\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\VcCategory\Default.cshtml.g.cs
 D:\pragmateck\EcommerceSite\EcommerceSite\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\VcBlog\Default.cshtml.g.cs
+D:\pragmateck\EcommerceSite\EcommerceSite\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll

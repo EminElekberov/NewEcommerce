@@ -3,6 +3,7 @@ using EcommerceSite.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -32,6 +33,10 @@ namespace EcommerceSite
                 options.UseSqlServer(Configuration.GetConnectionString("ConnectionEcommerce"));
             });
             services.AddScoped<IBookRepository, BookRepository>();
+            services.AddIdentity<User, IdentityRole>()
+                .AddEntityFrameworkStores<SyteDbContext>()
+                .AddTokenProvider<DataProtectorTokenProvider<User>>(TokenOptions.DefaultProvider);
+
 
         }
 
