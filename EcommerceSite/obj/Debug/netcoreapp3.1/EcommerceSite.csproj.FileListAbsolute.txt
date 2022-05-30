@@ -189,3 +189,5 @@ D:\pragmateck\EcommerceSite\EcommerceSite\obj\Debug\netcoreapp3.1\Razor\Views\Co
 D:\pragmateck\EcommerceSite\EcommerceSite\obj\Debug\netcoreapp3.1\Razor\Views\Faq\Index.cshtml.g.cs
 D:\pragmateck\EcommerceSite\EcommerceSite\obj\Debug\netcoreapp3.1\Razor\Views\Blog\Index.cshtml.g.cs
 D:\pragmateck\EcommerceSite\EcommerceSite\obj\Debug\netcoreapp3.1\Razor\Views\Blog\Details.cshtml.g.cs
+D:\pragmateck\EcommerceSite\EcommerceSite\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\VcCategory\Default.cshtml.g.cs
+D:\pragmateck\EcommerceSite\EcommerceSite\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\VcBlog\Default.cshtml.g.cs
