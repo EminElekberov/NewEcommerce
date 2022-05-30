@@ -11,12 +11,15 @@ namespace EcommerceSite.ViewModel
         public List<Category> Categories { get; set; }
         public List<Product> Products { get; set; }
         public List<Product> produ { get; set; }
+        public List<BlogReview> blogReviews { get; set; }
         public List<OurStores> ourStores { get; set; }
         public List<About> Abouts { get; set; }
         public List<WhoWeAre> whoWeAres { get; set; }
         public List<ContactInformation> ContactInformation{ get; set; }
         public List<MyTeam> MyTeams { get; set; }
         public List<Blog> Blogs { get; set; }
+        public List<Blog> Allblog { get; set; }
+        public BlogReview BlogReview { get; set; }
         public List<FaqTitle> faqTitles { get; set; }
         public List<FaqComponent> faqComponents { get; set; }
         public List<Client> Clients{ get; set; }
