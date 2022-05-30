@@ -48,7 +48,7 @@ namespace EcommerceSite.Areas.Admin.Controllers
             cases.Image = newImg;
             //cases.Date =DateTime.Parse(date);
             //new Blog {Date = DateTime.Parse(DateTime.Now.ToString("dddd, dd MMMM yyyy")), Title = cases.Title, Description = cases.Description, Phorizm = cases.Phorizm, CategoryId = cases.CategoryId }
-            _dbcontext.Blogs.Add(cases);
+            _dbcontext.Blogs.Add(new Blog { Date= DateTime.UtcNow.ToString("dddd, dd MMMM yyyy"),Title=cases.Title,Description=cases.Description,Phorizm=cases.Phorizm,CategoryId=cases.CategoryId,Image=cases.Image });
             _dbcontext.SaveChanges();
             return Redirect("/Admin/Blog/Index");
         }

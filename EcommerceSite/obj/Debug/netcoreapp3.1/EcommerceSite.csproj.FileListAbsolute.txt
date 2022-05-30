@@ -184,3 +184,7 @@ D:\pragmateck\EcommerceSite\EcommerceSite\obj\Debug\netcoreapp3.1\EcommerceSite.
 D:\pragmateck\EcommerceSite\EcommerceSite\obj\Debug\netcoreapp3.1\EcommerceSite.genruntimeconfig.cache
 D:\pragmateck\EcommerceSite\EcommerceSite\obj\Debug\netcoreapp3.1\EcommerceSite.csproj.AssemblyReference.cache
 D:\pragmateck\EcommerceSite\EcommerceSite\obj\Debug\netcoreapp3.1\Razor\Views\Product\Details.cshtml.g.cs
+D:\pragmateck\EcommerceSite\EcommerceSite\obj\Debug\netcoreapp3.1\Razor\Views\About\Index.cshtml.g.cs
+D:\pragmateck\EcommerceSite\EcommerceSite\obj\Debug\netcoreapp3.1\Razor\Views\Contact\Index.cshtml.g.cs
+D:\pragmateck\EcommerceSite\EcommerceSite\obj\Debug\netcoreapp3.1\Razor\Views\Faq\Index.cshtml.g.cs
+D:\pragmateck\EcommerceSite\EcommerceSite\obj\Debug\netcoreapp3.1\Razor\Views\Blog\Index.cshtml.g.cs
