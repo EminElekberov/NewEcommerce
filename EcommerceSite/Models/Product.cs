@@ -32,5 +32,7 @@ namespace EcommerceSite.Models
         [NotMapped]
         public List<int> SizeId { get; set; }
         public IList<SizeToProduct> SizeToProducts { get; set; }
+        public IList<Sales> sales { get; set; }
+
     }
 }

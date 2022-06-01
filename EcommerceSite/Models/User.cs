@@ -13,5 +13,7 @@ namespace EcommerceSite.Models
         public string LastName { get; set; }
         public bool Gender { get; set; }
         public string Password { get; set; }
+        public virtual IList<Sales> Sales { get; set; }
+
     }
 }

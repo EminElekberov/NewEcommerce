@@ -33,6 +33,13 @@ namespace EcommerceSite
             {
                 options.UseSqlServer(Configuration.GetConnectionString("ConnectionEcommerce"));
             });
+            services.AddDistributedMemoryCache();
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromDays(20);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
             services.AddScoped<IBookRepository, BookRepository>();
             services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<SyteDbContext>()
@@ -58,6 +65,7 @@ namespace EcommerceSite
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseAuthentication();
+            app.UseSession();
 
             app.UseRouting();
 

@@ -26,6 +26,7 @@ namespace EcommerceSite.Models
         public DbSet<MyTeam> MyTeams{ get; set; }
         public DbSet<Color> Colors { get; set; }
         public DbSet<Property> Properties { get; set; }
+        public DbSet<Sales> Sales { get; set; }
         public DbSet<WhoWeAre> whoWeAres { get; set; }
         public DbSet<Fabrica> Fabricas { get; set; }
         public DbSet<FaqTitle> FaqTitles { get; set; }
@@ -42,7 +43,15 @@ namespace EcommerceSite.Models
                .WithMany(b => b.Products)
                .HasForeignKey(a => a.CategoryId);
 
+            modelBuilder.Entity<Sales>()
+             .HasOne(a => a.User)
+             .WithMany(b => b.Sales)
+             .HasForeignKey(a => a.UserId);
 
+            modelBuilder.Entity<Sales>()
+              .HasOne(a => a.Product)
+              .WithMany(b => b.sales)
+              .HasForeignKey(a => a.ProductId);
 
             modelBuilder.Entity<FaqComponent>()
               .HasOne(a => a.FaqTitle)
