@@ -202,3 +202,4 @@ D:\pragmateck\EcommerceSite\EcommerceSite\obj\Debug\netcoreapp3.1\Razor\Views\Ac
 D:\pragmateck\EcommerceSite\EcommerceSite\obj\Debug\netcoreapp3.1\Razor\Views\Account\ResetPassword.cshtml.g.cs
 D:\pragmateck\EcommerceSite\EcommerceSite\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_PaginationPartial.cshtml.g.cs
 D:\pragmateck\EcommerceSite\EcommerceSite\obj\Debug\netcoreapp3.1\Razor\Views\Cart\Index.cshtml.g.cs
+D:\pragmateck\EcommerceSite\EcommerceSite\obj\Debug\netcoreapp3.1\Razor\Views\CheckOut\Index.cshtml.g.cs

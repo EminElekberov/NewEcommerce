@@ -15,6 +15,7 @@ namespace EcommerceSite.Models
         public DbSet<Product> Products { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Size> sizes { get; set; }
+        public DbSet<Checkout> Checkouts { get; set; }
         public DbSet<Deals> Deals{ get; set; }
         public DbSet<ContactForm> ContactForms{ get; set; }
         public DbSet<Blog> Blogs { get; set; }
