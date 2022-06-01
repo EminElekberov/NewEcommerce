@@ -192,3 +192,12 @@ D:\pragmateck\EcommerceSite\EcommerceSite\obj\Debug\netcoreapp3.1\Razor\Views\Bl
 D:\pragmateck\EcommerceSite\EcommerceSite\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\VcCategory\Default.cshtml.g.cs
 D:\pragmateck\EcommerceSite\EcommerceSite\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\VcBlog\Default.cshtml.g.cs
 D:\pragmateck\EcommerceSite\EcommerceSite\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\pragmateck\EcommerceSite\EcommerceSite\bin\Debug\netcoreapp3.1\MailKit.dll
+D:\pragmateck\EcommerceSite\EcommerceSite\bin\Debug\netcoreapp3.1\MimeKit.dll
+D:\pragmateck\EcommerceSite\EcommerceSite\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
+D:\pragmateck\EcommerceSite\EcommerceSite\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
+D:\pragmateck\EcommerceSite\EcommerceSite\obj\Debug\netcoreapp3.1\Razor\Views\Account\ConfirmEmail.cshtml.g.cs
+D:\pragmateck\EcommerceSite\EcommerceSite\obj\Debug\netcoreapp3.1\Razor\Views\Account\Edit.cshtml.g.cs
+D:\pragmateck\EcommerceSite\EcommerceSite\obj\Debug\netcoreapp3.1\Razor\Views\Account\ForgetPassword.cshtml.g.cs
+D:\pragmateck\EcommerceSite\EcommerceSite\obj\Debug\netcoreapp3.1\Razor\Views\Account\ResetPassword.cshtml.g.cs
+D:\pragmateck\EcommerceSite\EcommerceSite\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_PaginationPartial.cshtml.g.cs

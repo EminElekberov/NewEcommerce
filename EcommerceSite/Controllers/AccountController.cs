@@ -12,21 +12,24 @@ using System.Threading.Tasks;
 
 namespace EcommerceSite.Controllers
 {
-    public class UserAccountController : Controller
+    public class AccountController : Controller
     {
         private readonly SyteDbContext dbContext;
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IEmailService _emailService;
-        public UserAccountController(SyteDbContext _dbContext,
+        public AccountController(SyteDbContext _dbContext,
             UserManager<User> userManager,
             SignInManager<User> signInManager,
+            RoleManager<IdentityRole> roleManager,
             IEmailService emailService)
         {
             dbContext = _dbContext;
             _userManager = userManager;
             _signInManager = signInManager;
             _emailService = emailService;
+            _roleManager = roleManager;
         }
         public IActionResult Index()
         {
@@ -44,7 +47,7 @@ namespace EcommerceSite.Controllers
             var result = await _signInManager.PasswordSignInAsync(username, loginVm.Password, false, false);
             if (result.Succeeded)
             {
-                return Redirect($"Home/Index{username.Email}");
+                    return Redirect($"/Home/Index/{username.Email}");
             }
             return View(loginVm);
         }
@@ -131,7 +134,7 @@ namespace EcommerceSite.Controllers
             await _signInManager.SignInAsync(user, true);
             return RedirectToAction("Index", "Home");
         }
-        public async Task<IActionResult> ForgertPassword()
+        public async Task<IActionResult> ForgetPassword()
         {
             return View();
         }

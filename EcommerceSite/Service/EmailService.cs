@@ -18,14 +18,15 @@ namespace EcommerceSite.Service
         public void Send(string to, string subject, string html)
         {
             MimeMessage email = new MimeMessage();
-            email.From.Add(MailboxAddress.Parse("aspporto99@gmail.com"));
+            email.From.Add(MailboxAddress.Parse("elsadrehimov096@gmail.com"));//kimden email gedecek bura yaziriq 
             email.To.Add(MailboxAddress.Parse(to));
             email.Subject = subject;
-            email.Body = new TextPart(TextFormat.Html) { Text=html};
+            email.Body = new TextPart(TextFormat.Html) { Text = html };
 
+            //send message
             SmtpClient smtp = new SmtpClient();
             smtp.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
-            smtp.Authenticate("aspporto99@gmail.com", "aspnetc638");
+            smtp.Authenticate("elsadrehimov096@gmail.com", "emin123!A");
             smtp.Send(email);
             smtp.Disconnect(true);
         }

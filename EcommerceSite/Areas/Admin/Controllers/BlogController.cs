@@ -1,5 +1,6 @@
 ﻿using EcommerceSite.Extension;
 using EcommerceSite.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +12,8 @@ using System.Threading.Tasks;
 namespace EcommerceSite.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
+
     public class BlogController : Controller
     {
         private readonly SyteDbContext _dbcontext;

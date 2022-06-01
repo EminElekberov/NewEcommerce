@@ -1,4 +1,5 @@
-﻿using EcommerceSite.Models;
+﻿using EcommerceSite.Helper;
+using EcommerceSite.Models;
 using EcommerceSite.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -17,11 +18,13 @@ namespace EcommerceSite.Controllers
             dbContext = _dbContext;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page=1)
         {
+            int take = 1;
             HomeVm homeVm = new HomeVm
             {
-                Blogs=await dbContext.Blogs.Include(x=>x.category).ToListAsync(),
+                Pagination = new PaginationModel(await dbContext.Blogs.CountAsync(), take, page),
+                Blogs = await dbContext.Blogs.Include(x=>x.category).Skip(take*(page-1)).Take(take).ToListAsync(),
                 Categories=await dbContext.Categories.Include(x=>x.Products).ToListAsync()
             };
             return View(homeVm);

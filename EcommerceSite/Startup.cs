@@ -1,5 +1,6 @@
 using EcommerceSite.Models;
 using EcommerceSite.Repository;
+using EcommerceSite.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -37,6 +38,7 @@ namespace EcommerceSite
                 .AddEntityFrameworkStores<SyteDbContext>()
                 .AddTokenProvider<DataProtectorTokenProvider<User>>(TokenOptions.DefaultProvider);
 
+            services.AddScoped<IEmailService, EmailService>();
 
         }
 
@@ -55,6 +57,7 @@ namespace EcommerceSite
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseAuthentication();
 
             app.UseRouting();
 

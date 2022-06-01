@@ -33,8 +33,15 @@ using EcommerceSite.ViewModel;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "D:\pragmateck\EcommerceSite\EcommerceSite\Views\_ViewImports.cshtml"
+using EcommerceSite.Helper;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"be0de203709b39e2da0b23dfc2dbb1b958892e70", @"/Views/Shared/Components/VcBlog/Default.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"f5804bfd79ea64a411840254b1f94ac032f6c105", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"9dff8adfe4bcb01c9d73a29eafdd4445e697e77b", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared_Components_VcBlog_Default : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<HomeVm>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("action", new global::Microsoft.AspNetCore.Html.HtmlString("#"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -66,7 +73,7 @@ using EcommerceSite.ViewModel;
         public async override global::System.Threading.Tasks.Task ExecuteAsync()
         {
             WriteLiteral("\r\n\r\n<aside class=\"col-lg-3\">\r\n    <div class=\"sidebar\">\r\n        <div class=\"widget widget-search\">\r\n            <h3 class=\"widget-title\">Search</h3><!-- End .widget-title -->\r\n\r\n            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "be0de203709b39e2da0b23dfc2dbb1b958892e704521", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "be0de203709b39e2da0b23dfc2dbb1b958892e704698", async() => {
                 WriteLiteral(@"
                 <label for=""ws"" class=""sr-only"">Search in blog</label>
                 <input type=""search"" class=""form-control"" name=""ws"" id=""ws"" placeholder=""Search in blog"" required>
@@ -140,7 +147,7 @@ WriteAttributeValue("", 856, item.Id, 856, 8, false);
 #line hidden
 #nullable disable
             WriteLiteral("                    <li>\r\n                        <figure>\r\n                            <a href=\"#\">\r\n                                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "be0de203709b39e2da0b23dfc2dbb1b958892e708573", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "be0de203709b39e2da0b23dfc2dbb1b958892e708750", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

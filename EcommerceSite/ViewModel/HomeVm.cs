@@ -1,4 +1,5 @@
-﻿using EcommerceSite.Models;
+﻿using EcommerceSite.Helper;
+using EcommerceSite.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,8 @@ namespace EcommerceSite.ViewModel
     public class HomeVm
     {
         public List<Category> Categories { get; set; }
+        public PaginationModel Pagination { get; set; }
+
         public List<Product> Products { get; set; }
         public List<Product> produ { get; set; }
         public List<BlogReview> blogReviews { get; set; }
