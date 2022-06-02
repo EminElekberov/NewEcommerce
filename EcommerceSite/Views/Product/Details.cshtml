@@ -111,7 +111,7 @@
                                     <div class="product-details-action">
                                         <div class="details-action-col">
                                             <div class="product-details-quantity">
-                                                <input type="number" id="qty" class="form-control" value="1" min="1" max="10" step="1" data-decimals="0" required>
+                                                <input type="number" id="qty" class="form-control count" value="1" min="1" max="10" step="1" data-decimals="0" required>
                                             </div><!-- End .product-details-quantity -->
 
                                             <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
@@ -275,7 +275,9 @@
                                 </div><!-- End .product-action-vertical -->
 
                                 <div class="product-action">
-                                    <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                    <a asp-controller="Cart" asp-action="Buy" asp-route-id="@pro.Id" class="btn-product add_cart btn-cart"><span>add to cart</span></a>
+                                    <a class="hidden cart_link"></a>
+
                                 </div><!-- End .product-action -->
                             </figure><!-- End .product-media -->
 
@@ -291,7 +293,7 @@
                                     <div class="ratings">
                                         <div class="ratings-val" style="width: 20%;"></div><!-- End .ratings-val -->
                                     </div><!-- End .ratings -->
-                                        <span class="ratings-text">( @pro.Reviews.Count Reviews )</span>
+                                    <span class="ratings-text">( @pro.Reviews.Count Reviews )</span>
                                 </div><!-- End .rating-container -->
 
                                 <div class="product-nav product-nav-dots">
@@ -310,3 +312,9 @@
         </div><!-- End .page-content -->
     </main><!-- End .main -->
 </div>
+
+@section Scripts{
+    <script>
+        console.log("islediaye");
+    </script>
+}

@@ -24,7 +24,7 @@ namespace EcommerceSite.Controllers
             HomeVm homeVm = new HomeVm
             {
                 Categories = await dbContext.Categories.Include(z=>z.Products).ToListAsync(),
-                Products = await dbContext.Products.Include(x => x.category).ToListAsync(),
+                Products = await dbContext.Products.Include(x => x.category).Include(x=>x.Reviews).ToListAsync(),
                 Fabricas = await dbContext.Fabricas.ToListAsync(),
                 Deals=await dbContext.Deals.ToListAsync(),
                 Properties=await dbContext.Properties.ToListAsync(),

@@ -43,5 +43,16 @@ namespace EcommerceSite.Controllers
             await dbContext.SaveChangesAsync();
             return Redirect($"/categories/details/{review.Id}");
         }
+        public async Task<IActionResult> Index()
+        {
+            HomeVm homeVm = new HomeVm
+            {
+                Products = await dbContext.Products.Include(x => x.category).Include(x => x.ProductsToColors).ThenInclude(x => x.color).Include(x => x.SizeToProducts).ThenInclude(x => x.Size).Include(x => x.ProductPictureGalleries).ToListAsync(),
+                listRewiew = dbContext.Reviews.ToList(),
+                produ = await dbContext.Products.Include(x => x.category).Include(x => x.ProductsToColors).ThenInclude(x => x.color).Include(x => x.Reviews).ToListAsync(),
+                Reviews = await dbContext.Reviews.ToListAsync()
+            };
+            return View(homeVm);
+        }
     }
 }

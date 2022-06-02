@@ -157,13 +157,20 @@
                             <div class="product product-2">
 
                                 <figure class="product-media">
-                                    <span class="product-label label-circle label-top">Top</span>
-                                    <a href="product.html">
+                                    @if (item.Reviews.Count >= 2)
+                                    {
+                                        <span class="product-label label-circle label-top">Top</span>
+                                    }
+                                    @if (item.Percent != 0)
+                                    {
+                                        <span class="product-label label-circle label-sale">@item.Percent %</span>
+                                    }
+                                    <a href="/Product/details/@item.Id">
                                         <img src="~/images/categories/@item.Image" alt="Product image" style="height:140px;" class="product-image">
                                     </a>
 
                                     <div class="product-action-vertical">
-                                        <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
+                                        <a asp-action="Buy" asp-controller="Wish" asp-route-id="@item.Id" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
                                     </div><!-- End .product-action -->
 
                                     <div class="product-action">
@@ -184,7 +191,7 @@
                                         <div class="ratings">
                                             <div class="ratings-val" style="width: 100%;"></div><!-- End .ratings-val -->
                                         </div><!-- End .ratings -->
-                                        <span class="ratings-text">( 4 Reviews )</span>
+                                        <span class="ratings-text">( @item.Reviews.Count Reviews )</span>
                                     </div><!-- End .rating-container -->
                                 </div><!-- End .product-body -->
 
@@ -376,9 +383,6 @@
                                 <a class="nav-link active" id="trending-top-link" data-toggle="tab" href="#trending-top-tab" role="tab" aria-controls="trending-top-tab" aria-selected="true">Top Rated</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="trending-best-link" data-toggle="tab" href="#trending-best-tab" role="tab" aria-controls="trending-best-tab" aria-selected="false">Best Selling</a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link" id="trending-sale-link" data-toggle="tab" href="#trending-sale-tab" role="tab" aria-controls="trending-sale-tab" aria-selected="false">On Sale</a>
                             </li>
                         </ul>
@@ -417,194 +421,55 @@
                                                 }
                                             }
                                         }'>
-                                    <div class="product product-2">
-                                        <figure class="product-media">
-                                            <span class="product-label label-circle label-top">Top</span>
-                                            <a href="product.html">
-                                                <img src="~/assets/images/demos/demo-4/products/product-6.jpg" alt="Product image" class="product-image">
-                                            </a>
+                                    @foreach (var item in Model.Products)
+                                    {
+                                        if (item.Reviews.Count >= 2)
+                                        {
+                                            <div class="product product-2">
+                                                <figure class="product-media">
+                                                    <span class="product-label label-circle label-top">Top</span>
+                                                    <a href="/product/details/@item.Id">
+                                                        <img src="~/images/categories/@item.Image" alt="Product image" class="product-image">
+                                                    </a>
 
-                                            <div class="product-action-vertical">
-                                                <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
-                                            </div><!-- End .product-action -->
+                                                    <div class="product-action-vertical">
+                                                        <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
+                                                    </div><!-- End .product-action -->
 
-                                            <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                                <a href="popup/quickView.html" class="btn-product btn-quickview" title="Quick view"><span>quick view</span></a>
-                                            </div><!-- End .product-action -->
-                                        </figure><!-- End .product-media -->
+                                                    <div class="product-action">
+                                                        <a asp-action="buy" asp-controller="Cart" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
+                                                        <a href="popup/quickView.html" class="btn-product btn-quickview" title="Quick view"><span>quick view</span></a>
+                                                    </div><!-- End .product-action -->
+                                                </figure><!-- End .product-media -->
 
-                                        <div class="product-body">
-                                            <div class="product-cat">
-                                                <a href="#">Headphones</a>
-                                            </div><!-- End .product-cat -->
-                                            <h3 class="product-title"><a href="product.html">Bose - SoundSport  wireless headphones</a></h3><!-- End .product-title -->
-                                            <div class="product-price">
-                                                $199.99
-                                            </div><!-- End .product-price -->
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 100%;"></div><!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 4 Reviews )</span>
-                                            </div><!-- End .rating-container -->
+                                                <div class="product-body">
+                                                    <div class="product-cat">
+                                                        <a href="#">@item.category.Name</a>
+                                                    </div><!-- End .product-cat -->
+                                                    <h3 class="product-title"><a href="product.html">@item.Name</a></h3><!-- End .product-title -->
+                                                    <div class="product-price">
+                                                        $ @item.PresentPrice
+                                                    </div><!-- End .product-price -->
+                                                    <div class="ratings-container">
+                                                        <div class="ratings">
+                                                            <div class="ratings-val" style="width: 100%;"></div><!-- End .ratings-val -->
+                                                        </div><!-- End .ratings -->
+                                                        <span class="ratings-text">( @item.Reviews.Count Reviews )</span>
+                                                    </div><!-- End .rating-container -->
 
-                                            <div class="product-nav product-nav-dots">
-                                                <a href="#" style="background: #69b4ff;"><span class="sr-only">Color name</span></a>
-                                                <a href="#" style="background: #ff887f;"><span class="sr-only">Color name</span></a>
-                                                <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color name</span></a>
-                                            </div><!-- End .product-nav -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product -->
+                                                    <div class="product-nav product-nav-dots">
+                                                        @foreach (var color in item.ProductsToColors)
+                                                        {
+                                                            <a href="#" style="background: @color.color.Name;"><span class="sr-only">Color name</span></a>
 
-                                    <div class="product product-2">
-                                        <figure class="product-media">
-                                            <a href="product.html">
-                                                <img src="~/assets/images/demos/demo-4/products/product-7.jpg" alt="Product image" class="product-image">
-                                            </a>
+                                                        }
 
-                                            <div class="product-action-vertical">
-                                                <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
-                                            </div><!-- End .product-action -->
+                                                    </div><!-- End .product-nav -->
+                                                </div><!-- End .product-body -->
+                                            </div><!-- End .product -->
 
-                                            <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                                <a href="popup/quickView.html" class="btn-product btn-quickview" title="Quick view"><span>quick view</span></a>
-                                            </div><!-- End .product-action -->
-                                        </figure><!-- End .product-media -->
-
-                                        <div class="product-body">
-                                            <div class="product-cat">
-                                                <a href="#">Video Games</a>
-                                            </div><!-- End .product-cat -->
-                                            <h3 class="product-title"><a href="product.html">Microsoft - Refurbish Xbox One S 500GB</a></h3><!-- End .product-title -->
-                                            <div class="product-price">
-                                                $279.99
-                                            </div><!-- End .product-price -->
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 60%;"></div><!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 6 Reviews )</span>
-                                            </div><!-- End .rating-container -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product -->
-
-                                    <div class="product product-2">
-                                        <figure class="product-media">
-                                            <span class="product-label label-circle label-new">New</span>
-                                            <a href="product.html">
-                                                <img src="~/assets/images/demos/demo-4/products/product-8.jpg" alt="Product image" class="product-image">
-                                            </a>
-
-                                            <div class="product-action-vertical">
-                                                <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
-                                            </div><!-- End .product-action -->
-
-                                            <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                                <a href="popup/quickView.html" class="btn-product btn-quickview" title="Quick view"><span>quick view</span></a>
-                                            </div><!-- End .product-action -->
-                                        </figure><!-- End .product-media -->
-
-                                        <div class="product-body">
-                                            <div class="product-cat">
-                                                <a href="#">Smartwatches</a>
-                                            </div><!-- End .product-cat -->
-                                            <h3 class="product-title"><a href="product.html">Apple Watch Series 4 Gold Aluminum Case</a></h3><!-- End .product-title -->
-                                            <div class="product-price">
-                                                $499.99
-                                            </div><!-- End .product-price -->
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 80%;"></div><!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 4 Reviews )</span>
-                                            </div><!-- End .rating-container -->
-
-                                            <div class="product-nav product-nav-dots">
-                                                <a href="#" style="background: #edd2c8;"><span class="sr-only">Color name</span></a>
-                                                <a href="#" style="background: #eaeaec;"><span class="sr-only">Color name</span></a>
-                                                <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color name</span></a>
-                                            </div><!-- End .product-nav -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product -->
-
-                                    <div class="product product-2">
-                                        <figure class="product-media">
-                                            <span class="product-label label-circle label-top">Top</span>
-                                            <span class="product-label label-circle label-sale">Sale</span>
-                                            <a href="product.html">
-                                                <img src="~/assets/images/demos/demo-4/products/product-9.jpg" alt="Product image" class="product-image">
-                                            </a>
-
-                                            <div class="product-action-vertical">
-                                                <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
-                                            </div><!-- End .product-action -->
-
-                                            <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                                <a href="popup/quickView.html" class="btn-product btn-quickview" title="Quick view"><span>quick view</span></a>
-                                            </div><!-- End .product-action -->
-                                        </figure><!-- End .product-media -->
-
-                                        <div class="product-body">
-                                            <div class="product-cat">
-                                                <a href="#">TV & Home Theater</a>
-                                            </div><!-- End .product-cat -->
-                                            <h3 class="product-title"><a href="product.html">Sony - Class LED 2160p Smart 4K Ultra HD</a></h3><!-- End .product-title -->
-                                            <div class="product-price">
-                                                <span class="new-price">$1,699.99</span>
-                                                <span class="old-price">Was $1,999.99</span>
-                                            </div><!-- End .product-price -->
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 80%;"></div><!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 10 Reviews )</span>
-                                            </div><!-- End .rating-container -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product -->
-
-                                    <div class="product product-2">
-                                        <figure class="product-media">
-                                            <span class="product-label label-circle label-new">New</span>
-                                            <a href="product.html">
-                                                <img src="~/assets/images/demos/demo-4/products/product-3.jpg" alt="Product image" class="product-image">
-                                            </a>
-
-                                            <div class="product-action-vertical">
-                                                <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
-                                            </div><!-- End .product-action -->
-
-                                            <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                                <a href="popup/quickView.html" class="btn-product btn-quickview" title="Quick view"><span>quick view</span></a>
-                                            </div><!-- End .product-action -->
-                                        </figure><!-- End .product-media -->
-
-                                        <div class="product-body">
-                                            <div class="product-cat">
-                                                <a href="#">Tablets</a>
-                                            </div><!-- End .product-cat -->
-                                            <h3 class="product-title"><a href="product.html">Apple - 11 Inch iPad Pro  with Wi-Fi 256GB </a></h3><!-- End .product-title -->
-                                            <div class="product-price">
-                                                $899.99
-                                            </div><!-- End .product-price -->
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 80%;"></div><!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 4 Reviews )</span>
-                                            </div><!-- End .rating-container -->
-
-                                            <div class="product-nav product-nav-dots">
-                                                <a href="#" style="background: #edd2c8;"><span class="sr-only">Color name</span></a>
-                                                <a href="#" style="background: #eaeaec;"><span class="sr-only">Color name</span></a>
-                                                <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color name</span></a>
-                                            </div><!-- End .product-nav -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product -->
+                                        }
+                                    }
                                 </div><!-- End .owl-carousel -->
                             </div><!-- .End .tab-pane -->
                             <div class="tab-pane p-0 fade" id="trending-sale-tab" role="tabpanel" aria-labelledby="trending-sale-link">
@@ -710,7 +575,7 @@
                                     {
                                         <span class="product-label label-circle label-sale">@item.Percent%</span>
                                     }
-                                    <a href="product.html">
+                                    <a href="/Product/Details/@item.Id">
                                         <img src="~/images/categories/@item.Image" style="height:150px;" alt="Product image" class="product-image">
                                     </a>
 
@@ -740,7 +605,7 @@
                                         <div class="ratings">
                                             <div class="ratings-val" style="width: 40%;"></div><!-- End .ratings-val -->
                                         </div><!-- End .ratings -->
-                                        <span class="ratings-text">( 4 Reviews )</span>
+                                        <span class="ratings-text">( @item.Reviews.Count Reviews )</span>
                                     </div><!-- End .rating-container -->
 
                                     <div class="product-nav product-nav-dots">

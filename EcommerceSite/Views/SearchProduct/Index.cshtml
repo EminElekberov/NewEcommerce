@@ -1,0 +1,101 @@
+﻿@model IList<Product>
+<div class="container for-you">
+    <div class="products">
+        <div class="row justify-content-center">
+            @foreach (var item in Model)
+            {
+
+                <div class="col-6 col-md-4 col-lg-3">
+
+                    <div class="product product-2">
+                        <figure class="product-media">
+                            @if (item.Percent != 0)
+                            {
+                                <span class="product-label label-circle label-sale">@item.Percent%</span>
+                            }
+                            <a href="/Product/Details/@item.Id">
+                                <img src="~/images/categories/@item.Image" style="height:150px;" alt="Product image" class="product-image">
+                            </a>
+
+                            <div class="product-action-vertical">
+                                <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
+                            </div><!-- End .product-action -->
+
+                            <div class="product-action">
+                                <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
+                                <a href="popup/quickView.html" class="btn-product btn-quickview" title="Quick view"><span>quick view</span></a>
+                            </div><!-- End .product-action -->
+                        </figure><!-- End .product-media -->
+
+                        <div class="product-body">
+                            <div class="product-cat">
+                                <a href="#">@item.category.Name</a>
+                            </div><!-- End .product-cat -->
+                            <h3 class="product-title"><a href="product.html">@item.Name</a></h3><!-- End .product-title -->
+                            <div class="product-price">
+                                <span class="new-price">$@item.PresentPrice</span>
+                                @if (item.PastPrice != 0)
+                                {
+                                    <span class="old-price">Was $@item.PastPrice</span>
+                                }
+                            </div><!-- End .product-price -->
+                            <div class="ratings-container">
+                                <div class="ratings">
+                                    <div class="ratings-val" style="width: 40%;"></div><!-- End .ratings-val -->
+                                </div><!-- End .ratings -->
+                                <span class="ratings-text">( @item.Reviews.Count Reviews )</span>
+                            </div><!-- End .rating-container -->
+
+                            <div class="product-nav product-nav-dots">
+                                @foreach (var color in item.ProductsToColors)
+                                {
+                                    <a href="#" style="background: @color.color.Name;"><span class="sr-only">Color name</span></a>
+                                }
+                            </div><!-- End .product-nav -->
+                        </div><!-- End .product-body -->
+                    </div><!-- End .product -->
+
+                </div>
+            }<!-- End .col-sm-6 col-md-4 col-lg-3 -->
+        </div><!-- End .row -->
+    </div><!-- End .products -->
+</div><!-- End .container -->
+
+<div style="margin-top:80px;">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Image</th>
+                <th scope="col">Name</th>
+                <th scope="col">Present Price</th>
+                <th scope="col">Past Price</th>
+                <th scope="col">Percent</th>
+                <th scope="col">Description</th>
+                <th scope="col">Additional Information</th>
+                <th scope="col">Porduct Category</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+
+                <tr>
+                    <td>
+                        <img width="200" height="150" src="~/images/categories/@item.Image" alt="Alternate Text" />
+                    </td>
+                    <td>@item.Name</td>
+                    <td>@item.PresentPrice</td>
+                    <td>@item.PastPrice</td>
+                    <td>@item.Percent</td>
+                    <td>@Html.Raw(item.Description)</td>
+                    <td>@Html.Raw(item.Information)</td>
+                    <td>@item.category.Name</td>
+                </tr>
+
+            }
+
+        </tbody>
+    </table>
+</div>
