@@ -38,7 +38,7 @@ namespace EcommerceSite.Controllers
             }
             return -1;
         }
-        public async Task<IActionResult> Buy(int id, int? page)
+        public async Task<IActionResult> Buy(int id, int? page,int size)
         {
 
             if (SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart") == null)

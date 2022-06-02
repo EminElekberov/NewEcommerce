@@ -96,11 +96,9 @@
                                         <label for="size">Size:</label>
                                         <div class="select-custom">
                                             <select name="size" id="size" class="form-control">
-                                                <option value="#" selected="selected">One Size</option>
                                                 @foreach (var size in item.SizeToProducts)
                                                 {
-
-                                                    <option value="s">@size.Size.Name</option>
+                                                    <option value="@size.Size.id">@size.Size.Name</option>
                                                 }
                                             </select>
                                         </div><!-- End .select-custom -->
@@ -114,7 +112,7 @@
                                                 <input type="number" id="qty" class="form-control count" value="1" min="1" max="10" step="1" data-decimals="0" required>
                                             </div><!-- End .product-details-quantity -->
 
-                                            <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                            <a asp-controller="Cart" asp-action="Buy" asp-route-id="@item.Id"  class="btn-product btn-cart"><span>add to cart</span></a>
                                         </div><!-- End .details-action-col -->
 
                                         <div class="details-action-wrapper">
@@ -315,6 +313,21 @@
 
 @section Scripts{
     <script>
-        console.log("islediaye");
+        $(document).ready(() => {
+            $(".btn-cart").click(function (e) {
+                e.preventDefault()
+                let href = $(e.currentTarget).attr("href")
+
+                let size = $("#size").val();
+                let count = $(".count").val()
+
+
+                href = href + "?page=" + count + "&size=" + size;
+                location.href = href
+
+            })
+           /*  */
+        })
+
     </script>
 }

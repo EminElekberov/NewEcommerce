@@ -23,6 +23,8 @@ namespace EcommerceSite.Controllers
             List<ProductsToColors> productsToColors = new List<ProductsToColors>();
             if (rangePrimary == null && size == null && coloin == null)
             {
+                //var ele = await  dbContext.Blogs.FromSqlRaw("").ToListAsync()
+
                 return NotFound();
             }
             else

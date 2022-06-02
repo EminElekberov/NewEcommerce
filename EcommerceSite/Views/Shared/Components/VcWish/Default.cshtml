@@ -1,0 +1,12 @@
+﻿<div class="wishlist">
+    <a href="wishlist.html" title="Wishlist">
+        <div class="icon">
+            <i class="icon-heart-o"></i>
+            @if (ViewBag.wish != null)
+            {
+                <span class="wishlist-count badge">@ViewBag.wish.Count</span>
+            }
+        </div>
+        <p>Wishlist</p>
+    </a>
+</div><!-- End .compare-dropdown -->

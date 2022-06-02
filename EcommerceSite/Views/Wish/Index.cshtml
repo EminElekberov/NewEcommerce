@@ -49,7 +49,7 @@
                             <td class="price-col">$@item.Product.PresentPrice</td>
                             <td class="stock-col"><span class="in-stock">In stock</span></td>
                             <td class="action-col">
-                                <button asp-action="Buy" asp-controller="Wish" asp-route-id="@item.Product.Id" class="btn btn-block btn-outline-primary-2"><i class="icon-cart-plus"></i>Add to Cart</button>
+                                <a asp-action="Buy" asp-controller="Cart" asp-route-id="@item.Product.Id" class="btn btn-outline-primary" title="Add to cart"><span>add to cart</span></a>
                             </td>
                             <td class="remove-col"><button class="btn-remove"><i class="icon-close"></i></button></td>
                         </tr>
