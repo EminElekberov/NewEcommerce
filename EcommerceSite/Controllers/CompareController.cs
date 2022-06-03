@@ -26,6 +26,10 @@ namespace EcommerceSite.Controllers
             if (SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "comp") == null)
             {
                 List<Item> comp = new List<Item>();
+                foreach (var item in comp)
+                {
+                  var s=item.Product.category.Name;
+                }
                 comp.Add(new Item { Product = dbContext.Products.Where(x => x.Id == id).FirstOrDefault(), Quantity = 1 });
                 SessionHelper.SetObjectAsJson(HttpContext.Session, "comp", comp);
             }
@@ -36,6 +40,27 @@ namespace EcommerceSite.Controllers
                 comp.Add(new Item { Product = dbContext.Products.Where(x => x.Id == id).FirstOrDefault(), Quantity = 1 });
                 SessionHelper.SetObjectAsJson(HttpContext.Session, "comp", comp);
             }
+            return RedirectToAction("Index");
+        }
+        private int IsExist(int id)
+        {
+            List<Item> comp = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "comp");
+            for (int i = 0; i < comp.Count; i++)
+            {
+                if (comp[i].Product.Id.Equals(id))
+                {
+                    return i;
+                }
+
+            }
+            return -1;
+        }
+        public async Task<IActionResult> Remove(int id)
+        {
+            List<Item> comp = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "comp");
+            int index = IsExist(id);
+            comp.RemoveAt(index);
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "comp", comp);
             return RedirectToAction("Index");
         }
     }
