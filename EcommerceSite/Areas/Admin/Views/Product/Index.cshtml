@@ -1,0 +1,63 @@
+﻿@model IList<Product>
+@{ List<SizeToProduct> packetToComponents = ViewBag.PacketToComponents; }
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-primary" role="alert">
+        @TempData["Success"]
+    </div>
+}
+
+<div style="overflow-x: auto">
+
+    <div>
+        <a href="/Admin/Product/Create" class="btn btn-outline-info" style="width:100%">Add new student</a>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>category Name</th>
+                <th>Present Price</th>
+                <th>Past Price</th>
+                <th>Description</th>
+                <th>Size Guid</th>
+                <th>Additional Information</th>
+                <th>Edit/Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th scope="row">@item.Id</th>
+                    <td>
+                        <img width="200" height="150" src="~/images/categories/@item.Image" alt="Alternate Text" />
+                    </td>
+                    <th scope="row">@item.Name</th>
+                    <th scope="row">@item.category.Name</th>
+                    <td>@item.PresentPrice</td>
+                    <td>@Html.Raw(item.PastPrice)</td>
+                    <td>@Html.Raw(item.Description)</td>
+                    @foreach (var size in packetToComponents)
+                    {
+                        if (item.Id == size.ProductId)
+                        {
+                            @(size.Size.Name+ ",")
+                        }
+                    }
+                    <td>@item.Information</td>
+                    <td>
+                        <a href="/Admin/Product/Edit/@item.Id" style="color:red"><i class="fas fa-edit"></i></a>
+                        <a href="/Admin/Product/Delete/@item.Id" onclick="return confirm('Silmek istediyinizden eminsiz?')" style="color:red">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+</div>

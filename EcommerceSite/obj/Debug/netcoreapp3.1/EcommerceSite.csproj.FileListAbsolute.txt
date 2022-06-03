@@ -209,3 +209,10 @@ D:\pragmateck\EcommerceSite\EcommerceSite\obj\Debug\netcoreapp3.1\Razor\Views\Se
 D:\pragmateck\EcommerceSite\EcommerceSite\obj\Debug\netcoreapp3.1\Razor\Views\Wish\Index.cshtml.g.cs
 D:\pragmateck\EcommerceSite\EcommerceSite\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\VcWish\Default.cshtml.g.cs
 D:\pragmateck\EcommerceSite\EcommerceSite\obj\Debug\netcoreapp3.1\Razor\Views\Compare\Index.cshtml.g.cs
+D:\pragmateck\EcommerceSite\EcommerceSite\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\VcCompare\Default.cshtml.g.cs
+D:\pragmateck\EcommerceSite\EcommerceSite\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\ContactForm\CreateOpinion.cshtml.g.cs
+D:\pragmateck\EcommerceSite\EcommerceSite\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\ContactForm\Details.cshtml.g.cs
+D:\pragmateck\EcommerceSite\EcommerceSite\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\ContactForm\Index.cshtml.g.cs
+D:\pragmateck\EcommerceSite\EcommerceSite\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\User\Details.cshtml.g.cs
+D:\pragmateck\EcommerceSite\EcommerceSite\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\User\Index.cshtml.g.cs
+D:\pragmateck\EcommerceSite\EcommerceSite\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Product\Index.cshtml.g.cs

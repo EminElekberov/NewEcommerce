@@ -4,6 +4,7 @@ using EcommerceSite.Repository;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -26,10 +27,10 @@ namespace EcommerceSite.Areas.Admin.Controllers
             _bookRepository = bookRepository;
 
         }
-
         public IActionResult Index()
         {
-            var group = _dbcontext.Products.ToList();
+            ViewBag.PacketToComponents = _dbcontext.SizeToProducts.Include(x => x.Size).Include(y => y.Product).ToList();
+            var group = _dbcontext.Products.Include(x=>x.category).Include(x=>x.SizeToProducts).ThenInclude(x=>x.Size).ToList();
             return View(group);
         }
         [HttpGet]

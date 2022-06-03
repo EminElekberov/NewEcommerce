@@ -1,0 +1,35 @@
+﻿
+@model ContactForm
+<table class="table table-bordered">
+    <thead class="bg-password-image">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Subject</th>
+            <th scope="col">Email</th>
+            <th scope="col">Message</th>
+            <th scope="col">Phone</th>
+            @if (Model.MyOpinion != null)
+            {
+                <th>My Opinion</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr class="bg-gradient-light">
+            <th scope="row">@Model.Id</th>
+            <td>@Html.Raw(Model.Name)</td>
+            <td>@Html.Raw(Model.Subject)</td>
+            <td>@Html.Raw(Model.Email)</td>
+            <td>@Html.Raw(Model.Message)</td>
+            <td>@Html.Raw(Model.Phone)</td>
+            @if (Model.MyOpinion != null)
+            {
+                <td>@Html.Raw(Model.MyOpinion)</td>
+            }
+        </tr>
+
+
+    </tbody>
+</table>
