@@ -1,0 +1,42 @@
+﻿<div class="products">
+    <div class="row justify-content-center">
+        @foreach (var item in ViewBag.comp)
+        {
+
+            <div class="col-6 col-md-4 col-lg-3">
+
+                <div class="product product-2">
+                    <figure class="product-media">
+                        @if (item.Product.Percent != 0)
+                        {
+                            <span class="product-label label-circle label-sale">@item.Product.Percent%</span>
+                        }
+                        <a href="/Product/Details/@item.Product.Id">
+                            <img src="~/images/categories/@item.Product.Image" style="height:150px;" alt="Product image" class="product-image">
+                        </a>
+
+                        <div class="product-action-vertical">
+                            <a asp-action="buy" asp-controller="wish" asp-route-id="@item.Product.Id" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
+                        </div><!-- End .product-action -->
+
+                        <div class="product-action">
+                            <a asp-controller="cart" asp-action="Buy" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
+                        </div><!-- End .product-action -->
+                    </figure><!-- End .product-media -->
+
+                    <div class="product-body">
+                        <h3 class="product-title"><a href="product.html">@item.Product.Name</a></h3><!-- End .product-title -->
+                        <div class="product-price">
+                            <span class="new-price">$@item.Product.PresentPrice</span>
+                            @if (item.Product.PastPrice != 0)
+                            {
+                                <span class="old-price">Was $@item.Product.PastPrice</span>
+                            }
+                        </div><!-- End .product-price -->
+                    </div><!-- End .product-body -->
+                </div><!-- End .product -->
+
+            </div>
+        }<!-- End .col-sm-6 col-md-4 col-lg-3 -->
+    </div><!-- End .row -->
+</div><!-- End .products -->

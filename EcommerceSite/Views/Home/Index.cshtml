@@ -107,7 +107,8 @@
         <div class="container new-arrivals">
             <div class="heading heading-flex mb-3">
                 <div class="heading-left">
-                    <h2 class="title">New Arrivals</h2><!-- End .title -->
+                    <h2 class="title">Recommendation For You
+Arrivals</h2><!-- End .title -->
                 </div><!-- End .heading-left -->
 
                 <div class="heading-right">
@@ -175,7 +176,7 @@
 
                                     <div class="product-action">
                                         <a asp-action="Buy" asp-controller="Cart" asp-route-id="@item.Id" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                        <a href="popup/quickView.html" class="btn-product btn-quickview" title="Quick view"><span>quick view</span></a>
+                                        <a asp-action="Buy" asp-controller="Compare" asp-route-id="@item.Id" class="btn-product btn-compare" title="Compare"><span>Compare</span></a>
                                     </div><!-- End .product-action -->
                                 </figure><!-- End .product-media -->
 
@@ -438,7 +439,7 @@
 
                                                     <div class="product-action">
                                                         <a asp-action="buy" asp-controller="Cart" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                                        <a href="popup/quickView.html" class="btn-product btn-quickview" title="Quick view"><span>quick view</span></a>
+                                                        <a asp-action="buy" asp-controller="Compare" class="btn-product btn-quickview" title="Quick view"><span>Compare</span></a>
                                                     </div><!-- End .product-action -->
                                                 </figure><!-- End .product-media -->
 
