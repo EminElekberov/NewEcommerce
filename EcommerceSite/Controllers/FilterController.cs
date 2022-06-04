@@ -16,7 +16,7 @@ namespace EcommerceSite.Controllers
             dbContext = _dbContext;
         }
 
-        public async Task<IActionResult> Index(int rangePrimary, int size, int coloin)
+        public async Task<IActionResult> Index(int rangePrimary, int size, int coloin,int cate)
         {
             List<Product> sizeToProducts = new List<Product>();
             List<SizeToProduct> sizes = new List<SizeToProduct>();
@@ -24,11 +24,11 @@ namespace EcommerceSite.Controllers
             if (rangePrimary == null && size == null && coloin == null)
             {
                 //var ele = await  dbContext.Blogs.FromSqlRaw("").ToListAsync()
-
                 return NotFound();
             }
             else
             {
+                sizeToProducts = await dbContext.Products.Where(x => x.PresentPrice <= rangePrimary && x.CategoryId == cate).ToListAsync();
                 //sizes = await dbContext.SizeToProducts.Include(x => x.Size).Include(x => x.Product).Where(x => x.Size.id == size).ToListAsync();
                 //productsToColors = await dbContext.ProductsToColors.Include(x => x.color).Include(x => x.Product).Where(x => x.color.Id == coloin).ToListAsync();
                 //sizes = await dbContext.SizeToProducts.Where(x => x.Size.id == size).Where(x => x.Product.PresentPrice <= rangePrimary).ToListAsync();

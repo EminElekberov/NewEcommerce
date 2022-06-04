@@ -23,7 +23,11 @@
                         <div class="toolbox">
                             <div class="toolbox-left">
                                 <div class="toolbox-info">
-                                    Showing <span>9 of 56</span> Products
+                                    @foreach (var item in Model.listct)
+                                    {
+                                    <span> @item.Products.Count of 1 Pproducts</span>
+
+                                    }
                                 </div><!-- End .toolbox-info -->
                             </div><!-- End .toolbox-left -->
 
@@ -92,15 +96,17 @@
                                     <div class="col-6 col-md-4 col-lg-4">
                                         <div class="product product-7 text-center">
                                             <figure class="product-media">
-                                                <span class="product-label label-new">New</span>
-                                                <a href="product.html">
+                                                @if (item.Percent != 0)
+                                                {
+                                                    <span class="product-label label-new">@item.Percent %</span>
+                                                }
+                                                <a href="/Product/Details/@item.Id">
                                                     <img src="~/images/categories/@item.Image" style="height:185px;" alt="Product image" class="product-image">
                                                 </a>
 
                                                 <div class="product-action-vertical">
-                                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                                    <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                                    <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
+                                                    <a asp-controller="Wish" asp-action="Buy" asp-route-id="@item.Id" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                                                    <a asp-controller="Compare" asp-action="Buy" asp-route-id="@item.Id" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
                                                 </div><!-- End .product-action-vertical -->
 
                                                 <div class="product-action">

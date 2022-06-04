@@ -27,6 +27,7 @@ namespace EcommerceSite.Controllers
                 Products =await dbContext.Products.Include(x => x.category).Include(x=>x.ProductPictureGalleries).Where(x => x.CategoryId == id).Skip(take * (page - 1)).Take(take).ToListAsync(),
                 Categories=await dbContext.Categories.Include(x=>x.Products).ToListAsync(),
                 SizeToProducts=await dbContext.SizeToProducts.ToListAsync(),
+                listct=await dbContext.Categories.Where(x=>x.Id==id).Include(x=>x.Products).ToListAsync(),
                 Sizes=await dbContext.sizes.ToListAsync(),
                 Colors=await dbContext.Colors.ToListAsync()
             };

@@ -28,7 +28,7 @@ namespace EcommerceSite.Controllers
                 List<Item> comp = new List<Item>();
                 foreach (var item in comp)
                 {
-                  var s=item.Product.category.Name;
+                    var s = item.Product.category.Name;
                 }
                 comp.Add(new Item { Product = dbContext.Products.Where(x => x.Id == id).FirstOrDefault(), Quantity = 1 });
                 SessionHelper.SetObjectAsJson(HttpContext.Session, "comp", comp);

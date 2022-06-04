@@ -20,12 +20,20 @@ namespace EcommerceSite.Controllers
         }
         public IActionResult Index()
         {
-            var cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
-            ViewBag.cart = cart;
-            if (cart != null)
+            if (User.Identity.Name!=null)
             {
-                ViewBag.total = cart.Sum(item => item.Product.PresentPrice * item.Quantity);
+                var cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
+                ViewBag.cart = cart;
+                if (cart != null)
+                {
+                    ViewBag.total = cart.Sum(item => item.Product.PresentPrice * item.Quantity);
+                }
             }
+            else
+            {
+                return Redirect("/Account/Login");
+            }
+           
             return View();
         }
         [HttpPost]

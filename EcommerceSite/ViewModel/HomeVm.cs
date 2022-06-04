@@ -10,6 +10,7 @@ namespace EcommerceSite.ViewModel
     public class HomeVm
     {
         public List<Category> Categories { get; set; }
+        public List<Category> listct { get; set; }
         public PaginationModel Pagination { get; set; }
 
         public List<Product> Products { get; set; }
