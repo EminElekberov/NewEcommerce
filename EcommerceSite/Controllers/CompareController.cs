@@ -1,6 +1,7 @@
 ﻿using EcommerceSite.Helper;
 using EcommerceSite.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,14 +31,14 @@ namespace EcommerceSite.Controllers
                 {
                     var s = item.Product.category.Name;
                 }
-                comp.Add(new Item { Product = dbContext.Products.Where(x => x.Id == id).FirstOrDefault(), Quantity = 1 });
+                comp.Add(new Item { Product = dbContext.Products.Include(x=>x.category).Include(x => x.SizeToProducts).ThenInclude(x => x.Size).Include(x => x.ProductsToColors).ThenInclude(x => x.color).Where(x => x.Id == id).FirstOrDefault(), Quantity = 1 });
                 SessionHelper.SetObjectAsJson(HttpContext.Session, "comp", comp);
             }
             else
             {
                 List<Item> comp = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "comp");
 
-                comp.Add(new Item { Product = dbContext.Products.Where(x => x.Id == id).FirstOrDefault(), Quantity = 1 });
+                comp.Add(new Item { Product = dbContext.Products.Include(x=>x.category).Include(x=>x.SizeToProducts).ThenInclude(x=>x.Size).Include(x=>x.ProductsToColors).ThenInclude(x=>x.color).Where(x => x.Id == id).FirstOrDefault(), Quantity = 1 });
                 SessionHelper.SetObjectAsJson(HttpContext.Session, "comp", comp);
             }
             return RedirectToAction("Index");
