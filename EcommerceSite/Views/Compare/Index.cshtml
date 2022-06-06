@@ -1,60 +1,165 @@
-﻿<div class="products">
-    <div class="row justify-content-center">
-        @foreach (var item in ViewBag.comp)
-        {
+﻿@{
+    List<ProductsToColors> packetToColor = ViewBag.PacketToColor;
+}
+<div class="main-content-wrap compaer-page">
+    <div class="container">
+        <div class="row">
 
-            <div class="col-6 col-md-4 col-lg-3">
+            <div class="col-12">
 
-                <div class="product product-2">
-                    <figure class="product-media">
-                        @if (item.Product.Percent != 0)
-                        {
-                            <span class="product-label label-circle label-sale">@item.Product.Percent%</span>
-                        }
-                        <a href="/Product/Details/@item.Product.Id">
-                            <img src="~/images/categories/@item.Product.Image" style="height:150px;" alt="Product image" class="product-image">
-                        </a>
+                <div class="compaer-page--inner">
+                    <form action="#">
 
-                        <div class="product-action-vertical">
-                            <a asp-action="buy" asp-controller="wish" asp-route-id="@item.Product.Id" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
-                        </div><!-- End .product-action -->
+                        <!-- Compare Table -->
+                        <div class="compare-table table-responsive">
 
-                        <div class="product-action">
-                            <a asp-controller="cart" asp-action="Buy" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                        </div><!-- End .product-action -->
-                    </figure><!-- End .product-media -->
-                    <div class="product-body">
-                        <h3 class="product-title"><a href="product.html">@item.Product.Name</a></h3><!-- End .product-title -->
-                        <div class="product-price">
-                            <span class="new-price">$@item.Product.PresentPrice</span>
-                            @if (item.Product.PastPrice != 0)
-                            {
-                                <span class="old-price">Was $@item.Product.PastPrice</span>
-                            }
-                            <section class="section-holder">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-md-4 margin-bm32">
-                                            <div class="pricing-col">
-                                                <h3 class="margin-b32">@item.Product.category.Name</h3>
-                                                <ul class="price-features">
-                                                    <li>@item.Product.PresentPrice</li>
-                                                </ul>
-                                                <div class="view-more"><a href="#">Learn More</a></div>
-                                            </div>
-                                            <!-- /pricing-col -->
-                                        </div>
-                                    </div>
-                                    <!-- /row -->
-                                </div>
-                                <!-- /container -->
-                            </section>
+                            <table class="table mb-0">
+                                @if (ViewBag.comp != null)
+                                {
 
-                        </div><!-- End .product-price -->
-                    </div><!-- End .product-body -->
-                </div><!-- End .product -->
+                                    <tbody>
 
+
+                                        <tr>
+                                            <td class="first-column">Product</td>
+                                            @foreach (var item in ViewBag.comp)
+                                            {
+                                                <td class="product-image-title">
+                                                    <a href="#" class="image"><img style="width:150px;height:100px;" src="~/images/categories/@item.Product.Image" alt="Compare Product"></a>
+                                                    <a href="#" class="title">@item.Product.Name</a>
+                                                </td>
+                                            }
+                                        </tr>
+                                        <tr>
+                                            <td class="first-column">Category</td>
+                                            @foreach (var item in ViewBag.comp)
+                                            {
+                                                <td class="pro-desc">
+                                                    <a href="#" class="category">@item.Product.category.Name</a>
+                                                </td>
+                                            }
+                                        </tr>
+                                        <tr>
+                                            <td class="first-column">Description</td>
+                                            @foreach (var item in ViewBag.comp)
+                                            {
+                                                <td class="pro-desc">
+
+                                                    <p>@Html.Raw(item.Product.Description)</p>
+                                                </td>
+                                            }
+                                        </tr>
+                                        <tr>
+                                            <td class="first-column">Information</td>
+                                            @foreach (var item in ViewBag.comp)
+                                            {
+                                                <td class="pro-desc" style="width:300px;">
+                                                    @if (item.Product.Information != null)
+                                                    {
+                                                        <p>@Html.Raw(item.Product.Information)</p>
+
+                                                    }
+                                                    else
+                                                    {
+                                                        <p>Melumat yoxdur</p>
+
+                                                    }
+
+                                                </td>
+                                            }
+                                        </tr>
+                                        <tr>
+                                            <td class="first-column">Color</td>
+                                            @foreach (var item in ViewBag.comp)
+                                            {
+                                                <td class="pro-desc" style="width:300px;">
+                                                    @foreach (var item2 in packetToColor)
+                                                    {
+
+                                                        @if (item.Product.Id == item2.ProductId)
+                                                        {
+                                                            <p>@Html.Raw(item2.color.Name + ",")</p>
+
+                                                        }
+                                                    }
+                                                </td>
+                                            }
+                                        </tr>
+
+                                        <tr>
+                                            <td class="first-column">percent</td>
+                                            @foreach (var item in ViewBag.comp)
+                                            {
+                                                if (item.Product.Percent != 0)
+                                                {
+                                                    <td class="pro-price">@item.Product.Percent</td>
+                                                }
+                                                else
+                                                {
+                                                    <td class="pro-price">Melumat yoxdur</td>
+
+                                                }
+                                            }
+                                        </tr>
+                                        <tr>
+                                            <td class="first-column">Price</td>
+                                            @foreach (var item in ViewBag.comp)
+                                            {
+                                                <td class="pro-price">@item.Product.PresentPrice</td>
+
+                                            }
+                                        </tr>
+                                        <tr>
+                                            <td class="first-column">Past Price</td>
+                                            @foreach (var item in ViewBag.comp)
+                                            {
+                                                @if (item.Product.PastPrice != 0)
+                                                {
+                                                    <td class="pro-price">@item.Product.PastPrice</td>
+                                                }
+                                                else
+                                                {
+                                                    <td class="pro-price">Melumat yoxdur</td>
+
+                                                }
+
+                                            }
+                                        </tr>
+                                        <tr>
+                                            <td class="first-column">Color</td>
+                                            @foreach (var item in ViewBag.comp)
+                                            {
+                                                <td class="pro-color">Black</td>
+                                            }
+                                        </tr>
+                                        <tr>
+                                            <td class="first-column">Stock</td>
+                                            @foreach (var item in ViewBag.comp)
+                                            {
+                                                <td class="pro-stock">In Stock</td>
+                                            }
+                                        </tr>
+                                        <tr>
+                                            <td class="first-column">Add to cart</td>
+                                            @foreach (var item in ViewBag.comp)
+                                            {
+                                                <td class="pro-addtocart"><a asp-action="buy" asp-controller="cart" asp-route-id="@item.Product.Id" class="add-to-cart" tabindex="0"><span>ADD TO CART</span></a></td>
+                                            }
+                                        </tr>
+                                        <tr>
+                                            <td class="first-column">Delete</td>
+                                            @foreach (var item in ViewBag.comp)
+                                            {
+                                                <td class="pro-remove"><button><i class="fas fa-trash"></i></button></td>
+                                            }
+                                        </tr>
+                                    </tbody>
+                                }
+                            </table>
+                        </div>
+                    </form>
+                </div>
             </div>
-        }<!-- End .col-sm-6 col-md-4 col-lg-3 -->
-    </div><!-- End .row -->
-</div><!-- End .products -->
+        </div>
+    </div>
+</div>

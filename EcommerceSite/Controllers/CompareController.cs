@@ -18,6 +18,7 @@ namespace EcommerceSite.Controllers
         }
         public IActionResult Index()
         {
+            ViewBag.PacketToColor = dbContext.ProductsToColors.Include(x => x.color).Include(y => y.Product).ToList();
             var comp = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "comp");
             ViewBag.comp = comp;
             return View();
@@ -41,7 +42,7 @@ namespace EcommerceSite.Controllers
                 comp.Add(new Item { Product = dbContext.Products.Include(x=>x.category).Include(x=>x.SizeToProducts).ThenInclude(x=>x.Size).Include(x=>x.ProductsToColors).ThenInclude(x=>x.color).Where(x => x.Id == id).FirstOrDefault(), Quantity = 1 });
                 SessionHelper.SetObjectAsJson(HttpContext.Session, "comp", comp);
             }
-            return RedirectToAction("Index");
+            return Redirect("/Home/Index");
         }
         private int IsExist(int id)
         {
@@ -62,7 +63,13 @@ namespace EcommerceSite.Controllers
             int index = IsExist(id);
             comp.RemoveAt(index);
             SessionHelper.SetObjectAsJson(HttpContext.Session, "comp", comp);
-            return RedirectToAction("Index");
+            return Redirect("/Home/Index");
+        }
+        public async Task<IActionResult> RemoveCookies()
+        {
+            HttpContext.Session.Remove("comp");
+            return Redirect("/Home/Index");
+
         }
     }
 }

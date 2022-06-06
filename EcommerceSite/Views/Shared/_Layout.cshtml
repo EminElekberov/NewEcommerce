@@ -1,4 +1,16 @@
-﻿<!DOCTYPE html>
+﻿@inject Microsoft.AspNetCore.Identity.UserManager<User>  userManager;
+@*//Usermanager bir namaespace oludugu ucun onu bura impoert edende inject isdifad edirik*@
+
+@{
+    User user = null;
+    if (User.Identity.IsAuthenticated)
+    {
+        user = userManager.Users.FirstOrDefault(x => x.UserName == User.Identity.Name);
+    }
+}
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -70,7 +82,24 @@
                                             </div><!-- End .header-menu -->
                                         </div>
                                     </li>
-                                    <li><a href="#signin-modal" data-toggle="modal">Sign in / Sign up</a></li>
+                                    @if (user == null)
+                                    {
+                                        <li><a href="/Account/Login">Sign in / Sign up</a></li>
+                                    }
+                                    else
+                                    {
+                                        <div class="dropdown">
+                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                                                @user.FirstName  @user.LastName
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <a class="dropdown-item" href="/Account/Logout">Logout</a>
+                                                <a class="dropdown-item" href="/Account/Edit">Edit</a>
+                                            </div>
+                                        </div>
+
+                                      
+                                    }
                                 </ul>
                             </li>
                         </ul><!-- End .top-menu -->
@@ -106,15 +135,9 @@
                     </div>
 
                     <div class="header-right">
-                        <div class="dropdown compare-dropdown">
-                            <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static" title="Compare Products" aria-label="Compare Products">
-                                <div class="icon">
-                                    <i class="icon-random"></i>
-                                </div>
-                                <p>Compare</p>
-                            </a>
-                            @*@await Component.InvokeAsync("VcCompare")*@
-                        </div><!-- End .compare-dropdown -->
+
+                        @await Component.InvokeAsync("VcCompare")
+
                         @await Component.InvokeAsync("VcWish")
 
 
@@ -122,7 +145,7 @@
                     </div><!-- End .header-right -->
                 </div><!-- End .container -->
             </div><!-- End .header-middle -->
-          
+
         </header><!-- End .header -->
 
         <header class="header header-intro-clearance">

@@ -1,5 +1,7 @@
 ﻿@model IList<Product>
-@{ List<SizeToProduct> packetToComponents = ViewBag.PacketToComponents; }
+@{ List<SizeToProduct> packetToComponents = ViewBag.PacketToComponents;
+    List<ProductsToColors> packetToColor = ViewBag.PacketToColor;
+}
 @if (TempData["Success"] != null)
 {
     <div class="alert alert-primary" role="alert">
@@ -17,6 +19,7 @@
             <tr>
                 <th>Id</th>
                 <th>Image</th>
+                <th>Color</th>
                 <th>Name</th>
                 <th>category Name</th>
                 <th>Present Price</th>
@@ -36,6 +39,15 @@
                     <td>
                         <img width="200" height="150" src="~/images/categories/@item.Image" alt="Alternate Text" />
                     </td>
+                    <th scope="row">
+                        @foreach (var item2 in packetToColor)
+                        {
+                            if (item.Id==item2.ProductId)
+                            {
+                                @(item2.color.Name + ",")
+                            }
+                        }
+                    </th>
                     <th scope="row">@item.Name</th>
                     <th scope="row">@item.category.Name</th>
                     <td>@item.PresentPrice</td>

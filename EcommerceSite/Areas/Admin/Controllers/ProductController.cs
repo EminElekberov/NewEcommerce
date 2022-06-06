@@ -29,6 +29,7 @@ namespace EcommerceSite.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
+            ViewBag.PacketToColor = _dbcontext.ProductsToColors.Include(x => x.color).Include(y => y.Product).ToList();
             ViewBag.PacketToComponents = _dbcontext.SizeToProducts.Include(x => x.Size).Include(y => y.Product).ToList();
             var group = _dbcontext.Products.Include(x=>x.category).Include(x=>x.SizeToProducts).ThenInclude(x=>x.Size).ToList();
             return View(group);
