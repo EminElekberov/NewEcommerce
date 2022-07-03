@@ -31,7 +31,7 @@ namespace EcommerceSite
             services.AddControllersWithViews();
             services.AddDbContext<SyteDbContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("ConnectionEcommerce"));
+                options.UseSqlServer(Configuration.GetConnectionString("Server"));
             });
             services.AddDistributedMemoryCache();
             services.AddSession(options =>
