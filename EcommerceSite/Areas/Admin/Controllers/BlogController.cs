@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace EcommerceSite.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = "Admin")]
+   // [Authorize(Roles = "Admin")]
 
     public class BlogController : Controller
     {
