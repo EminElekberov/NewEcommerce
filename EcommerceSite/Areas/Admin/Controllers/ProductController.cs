@@ -25,7 +25,6 @@ namespace EcommerceSite.Areas.Admin.Controllers
             _dbcontext = portoDbContext;
             env = _env;
             _bookRepository = bookRepository;
-
         }
         public IActionResult Index()
         {
