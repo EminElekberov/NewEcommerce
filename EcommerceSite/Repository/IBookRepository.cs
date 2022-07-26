@@ -14,7 +14,6 @@ namespace EcommerceSite.Repository
         Task<Product> GetBookById(int id);
         Task<List<Product>> GetTopBooksAsync(int count);
         List<Product> SearchBook(string title, string authorName);
-
         string GetAppName();
     }
 }

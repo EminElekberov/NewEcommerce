@@ -12,13 +12,11 @@ namespace EcommerceSite.Repository
     {
         private readonly SyteDbContext _context = null;
         private readonly IConfiguration _configuration;
-
         public BookRepository(SyteDbContext context, IConfiguration configuration)
         {
             _context = context;
             _configuration = configuration;
         }
-
         public async Task<int> AddNewBook(Product model)
         {
             var newBook = new Product()
@@ -92,7 +90,6 @@ namespace EcommerceSite.Repository
                       CategoryId = model.CategoryId
                   }).Take(count).ToListAsync();
         }
-
         public List<Product> SearchBook(string title, string authorName)
         {
             throw new NotImplementedException();

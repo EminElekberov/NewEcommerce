@@ -148,6 +148,7 @@ namespace EcommerceSite.Controllers
                 ModelState.AddModelError("", "email was not found");
                 return View();
             }
+
             string token = await _userManager.GeneratePasswordResetTokenAsync(user);
             string callback = Url.Action("resetpassword", "userAccount", new { token, email = user.Email }, Request.Scheme);
             string body = string.Empty;

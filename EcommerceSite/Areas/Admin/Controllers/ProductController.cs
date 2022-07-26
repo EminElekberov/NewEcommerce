@@ -83,7 +83,6 @@ namespace EcommerceSite.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Product bookModel)
         {
-
             if (ModelState.IsValid)
             {
                 if (bookModel.Photo != null)
