@@ -71,6 +71,5 @@ namespace EcommerceSite.Controllers
             SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
             return RedirectToAction("Index");
         }
-
     }
 }
