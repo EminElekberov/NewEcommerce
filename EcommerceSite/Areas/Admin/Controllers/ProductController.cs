@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 namespace EcommerceSite.Areas.Admin.Controllers
 {
     [Area("Admin")]
+
     public class ProductController : Controller
     {
         private readonly SyteDbContext _dbcontext;
