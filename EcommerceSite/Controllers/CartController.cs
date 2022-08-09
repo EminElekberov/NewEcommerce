@@ -15,7 +15,6 @@ namespace EcommerceSite.Controllers
         {
             dbContext = _dbContext;
         }
-
         public async Task<IActionResult> Index()
         {
             var cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
