@@ -35,7 +35,6 @@ namespace EcommerceSite.Controllers
                 comp.Add(new Item { Product = dbContext.Products.Include(x=>x.category).Include(x => x.SizeToProducts).ThenInclude(x => x.Size).Include(x => x.ProductsToColors).ThenInclude(x => x.color).Where(x => x.Id == id).FirstOrDefault(), Quantity = 1 });
                 SessionHelper.SetObjectAsJson(HttpContext.Session, "comp", comp);
             }
-
             else
             {
                 List<Item> comp = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "comp");
