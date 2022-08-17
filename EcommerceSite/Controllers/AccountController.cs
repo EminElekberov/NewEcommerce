@@ -39,7 +39,6 @@ namespace EcommerceSite.Controllers
         {
             return View();
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginVm loginVm)
