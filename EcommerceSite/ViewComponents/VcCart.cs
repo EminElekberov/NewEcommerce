@@ -25,5 +25,6 @@ namespace EcommerceSite.ViewComponents
             }
             return View();
         }
+
     }
 }
