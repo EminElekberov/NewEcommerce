@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace EcommerceSite.ViewComponents
 {
+
     public class VcCart: ViewComponent
     {
         private readonly SyteDbContext dbContext;
