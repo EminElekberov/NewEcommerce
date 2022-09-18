@@ -288,6 +288,7 @@
             $(".sizers").each(function (e) {
                 $(this).click(function (s) {
                     let id = $(s.currentTarget).val();
+                    console.log("id si budur "+id);
                     $("#sizer").attr("value", id);
                     console.log($("#sizer").attr("value"));
 
