@@ -16,6 +16,7 @@ namespace EcommerceSite.Helper
                 ReferenceLoopHandling = ReferenceLoopHandling.Ignore
             }
 ));
+
         }
         public static T GetObjectFromJson<T>(this ISession session, string key)
         {
