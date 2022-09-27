@@ -54,6 +54,7 @@ namespace EcommerceSite.Areas.Admin.Controllers
                     await dbContext.SaveChangesAsync();
                     await _signInManager.SignInAsync(identityUser, true);
                 }
+
             }
         }
     }
