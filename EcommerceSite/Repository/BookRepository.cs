@@ -42,6 +42,7 @@ namespace EcommerceSite.Repository
                 });
             }
 
+
             await _context.Products.AddAsync(newBook);
             await _context.SaveChangesAsync();
 
