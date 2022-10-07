@@ -30,9 +30,7 @@ namespace EcommerceSite.Repository
                 SizeToProducts = model.SizeToProducts,
                 CategoryId=model.CategoryId
             };
-
             newBook.ProductPictureGalleries = new List<ProductPictureGallery>();
-
             foreach (var file in model.ProductPictureGalleries)
             {
                 newBook.ProductPictureGalleries.Add(new ProductPictureGallery()
@@ -41,11 +39,8 @@ namespace EcommerceSite.Repository
                     URL = file.URL
                 });
             }
-
-
             await _context.Products.AddAsync(newBook);
             await _context.SaveChangesAsync();
-
             return newBook.Id;
         }
 

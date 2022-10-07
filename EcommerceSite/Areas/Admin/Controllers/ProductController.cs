@@ -105,6 +105,7 @@ namespace EcommerceSite.Areas.Admin.Controllers
                         bookModel.ProductPictureGalleries.Add(gallery);
                     }
                 }
+
                 int id = await _bookRepository.AddNewBook(bookModel);
                 if (id > 0)
                 {

@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace EcommerceSite.Repository
 {
-   public interface IBookRepository
+    public interface IBookRepository
     {
         Task<int> AddNewBook(Product model);
-       // Task<Books> AddNewBooks(Category model);
+        // Task<Books> AddNewBooks(Category model);
         Task<List<Product>> GetAllBooks();
         Task<Product> GetBookById(int id);
         Task<List<Product>> GetTopBooksAsync(int count);
