@@ -80,6 +80,7 @@ namespace EcommerceSite.Areas.Admin.Controllers
         //    #endregion
         //}
         #endregion
+
         [HttpPost]
         public async Task<IActionResult> Create(Product bookModel)
         {
